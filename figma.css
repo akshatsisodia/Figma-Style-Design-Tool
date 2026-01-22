@@ -1,8 +1,12 @@
+/* ------- Custom Font ----- */
+
 @font-face {
   font-family: aeonik;
   font-weight: 500;
   src: url(./font/Aeonik-Regular.ttf);
 }
+
+/* ------- CSS Boiler Plate Code ----- */
 
 * {
   margin: 0;
@@ -18,10 +22,14 @@ body {
   width: 100%;
 }
 
+/* ------- Container main ----- */
+
 .main {
   height: 100%;
   width: 100%;
 }
+
+/* ------- canvas ----- */
 
 #canvas {
   height: 100%;
@@ -29,6 +37,8 @@ body {
   background-color: #1e1e1e;
   position: relative;
 }
+
+/* ------- Layout Panel ----- */
 
 #layout {
   height: 43%;
@@ -38,7 +48,7 @@ body {
   top: 5%;
   background-color: #2c2c2c;
   border: 1px solid #ffffff12;
-  padding: 0px 20px;
+  padding: 10px 20px;
   border-radius: 10px;
   box-shadow: 5px 5px 10px rgba(30, 30, 30, 0.5);
   display: flex;
@@ -47,10 +57,19 @@ body {
 }
 
 #layout h2 {
-  font-size: 30px;
+  font-size: 25px;
   font-weight: 300;
-  padding: 10px 10px;
 }
+
+/* ------- No Element Selected ----- */
+
+#no-selection {
+  color: #888;
+  font-size: 14px;
+  text-align: start;
+}
+
+/* ------- Element Selected ----- */
 
 #layout #common-layout {
   display: flex;
@@ -58,6 +77,8 @@ body {
   gap: 10px;
   padding: 0px 10px;
 }
+
+/* ------- Rectangle Element Selected ----- */
 
 #rect-layout {
   display: flex;
@@ -77,6 +98,8 @@ input {
   outline: none;
 }
 
+/* ------- Text Element Selected ----- */
+
 #text-layout {
   display: flex;
   flex-direction: column;
@@ -84,9 +107,13 @@ input {
   padding: 0px 10px;
 }
 
+/* ------- For toggle down according to element selected ----- */
+
 .hidden{
     display: none !important; 
 }
+
+/* ------- Layers Panel ----- */
 
 #layers {
   height: 43%;
@@ -102,19 +129,11 @@ input {
 }
 
 #layers h2 {
-  font-size: 20px;
+  font-size: 25px;
   font-weight: 300;
 }
 
-.box {
-  height: 100px;
-  width: 100px;
-  background-color: #fff;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
+/* ------- Theme Changing ----- */
 
 #theme {
   position: absolute;
@@ -133,6 +152,8 @@ input {
 #theme:active {
   scale: 0.97;
 }
+
+/* ------- Toolbar for adding Elements ----- */
 
 #toolbar {
   height: 60px;
@@ -156,7 +177,7 @@ input {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 10px;
+  padding: 8px;
   cursor: pointer;
   border-radius: 5px;
   transition: all ease 0.2s;
@@ -173,6 +194,13 @@ input {
   background-color: transparent;
 }
 
+.toolbar-btn .text {
+  height: 100%;
+  width: 100%;
+  border: 1px solid white;
+  background-color: transparent;
+}
+
 .toolbar-btn h2 {
   color: white;
   font-weight: 100;
@@ -182,3 +210,33 @@ input {
   background-color: #1e1e1e;
   box-shadow: 5px 5px 10px rgba(30, 30, 30, 0.5);
 }
+
+.editor-element {
+  position: absolute;
+  box-sizing: border-box;
+}
+
+.editor-element.rectangle{
+  background-color: #D9D9D9;
+}
+
+.editor-element.text {
+  background-color: transparent;
+  border: 1px dashed transparent;
+  padding: 4px;
+  cursor: text;
+}
+
+.editor-element.selected {
+  outline: 2px solid #4da3ff;
+}
+
+.editor-element.text.selected {
+  outline: 1px solid #4a90e2;
+}
+
+.element.text:focus {
+  outline: none;
+}
+
+

@@ -12,30 +12,36 @@
         <button id="theme">Change Theme</button>
         <div id="layout">
           <h2>Layout</h2>
+          <div id="no-selection">
+            <p>No element selected</p>
+            <span>Select an element to edit its properties</span>
+          </div>
           <div id="common-layout" class="hidden">
-            <label for="">Height - &nbsp;<input type="number" ></label>
-            <label for="">Width - &nbsp;<input type="number"></label>
-            <label for="">X - &nbsp;<input type="number" ></label>
-            <label for="">Y - &nbsp;<input type="number"></label>
+            <label for="">Height - &nbsp;<input type="number" /></label>
+            <label for="">Width - &nbsp;<input type="number" /></label>
+            <label for="">X - &nbsp;<input type="number" /></label>
+            <label for="">Y - &nbsp;<input type="number" /></label>
           </div>
           <div id="rect-layout" class="hidden">
-            <label for="">Color - &nbsp;<input type="color" value="#6c5ce7" id="rect-color"></label>
-            <label for="">Radius - &nbsp;<input type="number" id="rect-radius"></label>
+            <label for="">Color - &nbsp;<input type="color" value="#6c5ce7" id="rect-color" /></label>
+            <label for="">Radius - &nbsp;<input type="number" id="rect-radius" /></label>
           </div>
           <div id="text-layout" class="hidden">
-            <label for="">Font Size - &nbsp;<input type="color" value="#6c5ce7" id="rect-color"></label>
-            <label for="">Color - &nbsp;<input type="number" id="rect-radius"></label>
+            <label for="">Font Size - &nbsp;<input type="color" value="#6c5ce7" id="rect-color" /></label>
+            <label for="">Color - &nbsp;<input type="number" id="rect-radius" /></label>
           </div>
         </div>
         <div id="layers">
           <h2>Layers</h2>
         </div>
         <div id="toolbar">
-          <button class="toolbar-btn">
+          <button class="toolbar-btn" id="add-rect">
             <div class="rect"></div>
           </button>
-          <button class="toolbar-btn">
-            <h2>T</h2>
+          <button class="toolbar-btn" id="add-text">
+            <div class="text">
+              <h2>T</h2>
+            </div>
           </button>
           <button class="toolbar-btn">
             <h3>JSON</h3>
