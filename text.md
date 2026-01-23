@@ -5,10 +5,10 @@ const themeToggle = document.querySelector("#themeToggle");
 const root = document.documentElement;
 
 // Check for saved theme or default to light
-const currentTheme = localStorage.getItem("theme") || "light";
+const currentTheme = localStorage.getItem('theme') || 'light';
 
 // Apply theme on load
-root.classList.remove("dark", "light");
+root.classList.remove('dark', 'light');
 root.classList.add(currentTheme);
 
 // Toggle theme on button click
@@ -18,15 +18,14 @@ themeToggle.addEventListener("click", (e) => {
     root.classList.remove("dark");
     root.classList.add("light");
     localStorage.setItem("theme", "light");
-    themeToggle.textContent = "Toggle Theme";
+    themeToggle.textContent = "Toggle Theme"; // or update button text
   } else {
     root.classList.remove("light");
     root.classList.add("dark");
     localStorage.setItem("theme", "dark");
-    themeToggle.textContent = "Toggle Theme";
+    themeToggle.textContent = "Toggle Theme"; // or update button text
   }
 });
-
 // state management - Source of Data
 
 const elemState = {
@@ -112,6 +111,8 @@ function createElementUI(data) {
       el.contentEditable = true;
       el.focus();
 
+      // ADD THIS - Automatically select all text
+
       setTimeout(() => {
         const range = document.createRange();
         range.selectNodeContents(el);
@@ -145,7 +146,7 @@ function createElementUI(data) {
 
     // if content is Editing that do nothing
 
-    if (el.contentEditable === "true") return;
+    if (el.contentEditable === true) return;
 
     // otherwise Drag
 
@@ -212,6 +213,8 @@ function getSelectedElement() {
   return elemState.elements.find((elem) => elem.id === elemState.selectedElementId);
 }
 
+// function for Start Dragging
+
 // mousemove
 
 document.addEventListener("mousemove", (e) => {
@@ -262,7 +265,8 @@ function handleDragMove(e) {
   let newX = e.clientX - canvasRect.left - elemState.draggingData.dragOffsetX;
   let newY = e.clientY - canvasRect.top - elemState.draggingData.dragOffsetY;
 
-  // setting Canvas Boundary - constrain position
+  // setting Canvas Boundry
+
   newX = Math.max(0, Math.min(newX, canvasRect.width - elemData.width));
   newY = Math.max(0, Math.min(newY, canvasRect.height - elemData.height));
 
@@ -347,62 +351,38 @@ function handleResizeMove(e) {
 
   let { width, height, x, y } = elData;
 
-  // Get canvas dimensions for boundary checking
-  const canvasRect = canvas.getBoundingClientRect();
-
   if (rd.handle === "se") {
     width = rd.startWidth + dx;
     height = rd.startHeight + dy;
-    // Constrain to canvas
-    width = Math.min(width, canvasRect.width - x);
-    height = Math.min(height, canvasRect.height - y);
   } else if (rd.handle === "sw") {
     width = rd.startWidth - dx;
     height = rd.startHeight + dy;
     x = rd.startXPos + dx;
-    // Constrain to canvas
-    if (x < 0) {
-      width = rd.startWidth + rd.startXPos;
-      x = 0;
-    }
-    height = Math.min(height, canvasRect.height - y);
   } else if (rd.handle === "ne") {
     width = rd.startWidth + dx;
     height = rd.startHeight - dy;
     y = rd.startYPos + dy;
-    // Constrain to canvas
-    width = Math.min(width, canvasRect.width - x);
-    if (y < 0) {
-      height = rd.startHeight + rd.startYPos;
-      y = 0;
-    }
   } else if (rd.handle === "nw") {
     width = rd.startWidth - dx;
     height = rd.startHeight - dy;
     x = rd.startXPos + dx;
     y = rd.startYPos + dy;
-    // Constrain to canvas
-    if (x < 0) {
-      width = rd.startWidth + rd.startXPos;
-      x = 0;
-    }
-    if (y < 0) {
-      height = rd.startHeight + rd.startYPos;
-      y = 0;
-    }
   }
 
   // minimum size
+
   width = Math.max(30, width);
   height = Math.max(20, height);
 
   // update state
+
   elData.width = width;
   elData.height = height;
   elData.x = x;
   elData.y = y;
 
   // update DOM
+
   const domEl = canvas.querySelector(`[data-id="${elData.id}"]`);
   if (!domEl) return;
 
@@ -503,6 +483,7 @@ function renderLayersPanel() {
 // ----------------------------->>>>>
 
 function moveLayerUp(id) {
+  console.log("move layer up");
   const el = elemState.elements.find((e) => e.id === id);
   if (!el) return;
 

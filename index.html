@@ -3,13 +3,22 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Figma by Code</title>
     <link rel="stylesheet" href="figma.css" />
   </head>
   <body>
     <main class="main">
+      <!-- Main Canvas Area -->
+
       <div id="canvas">
-        <button id="theme">Change Theme</button>
+        <!-- Toggle Theme Button -->
+
+        <button class="theme-toggle" id="themeToggle">
+          <span>Toggle Theme</span>
+        </button>
+
+        <!-- Layout Panel -->
+
         <div id="layout">
           <h2>Layout</h2>
           <div id="no-selection">
@@ -31,9 +40,16 @@
             <label for="">Color - &nbsp;<input type="number" id="rect-radius" /></label>
           </div>
         </div>
+
+        <!-- Layers Panel -->
+
         <div id="layers">
           <h2>Layers</h2>
+          <ul id="layers-list"></ul>
         </div>
+
+        <!-- Toolbar -->
+
         <div id="toolbar">
           <button class="toolbar-btn" id="add-rect">
             <div class="rect"></div>
