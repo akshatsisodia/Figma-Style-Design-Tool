@@ -146,7 +146,7 @@ Exports are not production-ready but accurately represent the canvas state.
 - Since the project is built with plain HTML, CSS, and JavaScript, it works seamlessly as a static site on Vercel.
 
 Live URL:
-Add your deployed link here
+[(https://design-by-code.vercel.app/)]
 ---
 
 
