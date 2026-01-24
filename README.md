@@ -1,4 +1,4 @@
-# Figma-Style Design Tool (DOM Only)
+# Figma-Style Design Tool 
 
 A lightweight visual design editor inspired by Figma, built entirely using **HTML, CSS, and vanilla JavaScript**.  
 No canvas, no SVG, no frameworks — everything is handled through direct DOM manipulation.
@@ -16,8 +16,6 @@ The emphasis is **not** on performance optimizations or advanced rendering, but 
 - Accurate mouse and keyboard event handling
 - Proper state management
 - Clear separation of logic
-
-(As defined in the project brief) :contentReference[oaicite:0]{index=0}
 
 ---
 
@@ -62,7 +60,7 @@ The emphasis is **not** on performance optimizations or advanced rendering, but 
 
 **Rotation**
 - Basic rotation using CSS `transform`
-- Event-based logic (no physics engines)
+- Event-based logic
 - Rotation state persists on save/load
 
 ---
