@@ -29,7 +29,7 @@
 @font-face {
   font-family: aeonik;
   font-weight: 500;
-  src: url(./font/Aeonik-Regular.ttf);
+  src: url("./font/Aeonik-Regular.woff2") format("woff2");
 }
 
 /* ------- CSS Boiler Plate Code ----- */
@@ -63,25 +63,28 @@ body {
   background-color: var(--canvas-bg);
   position: relative;
   transition: background-color 0.3s ease;
+  cursor: default;
+  overflow: hidden;
 }
 
 /* ------- Layout Panel ----- */
 
 #layout {
-  height: 43%;
+  height: 50%;
   width: 250px;
   position: absolute;
   right: 2%;
-  top: 5%;
+  top: 2%;
   background-color: var(--panel-bg);
   border: var(--border);
   padding: 10px 20px;
   border-radius: 10px;
   box-shadow: var(--boxShadow);
   display: flex;
-  flex-direction: column;
   gap: 10px;
+  flex-direction: column;
   user-select: none;
+  z-index: 99;
 }
 
 #layout h2 {
@@ -89,7 +92,113 @@ body {
   font-weight: 300;
 }
 
-/* ------- No Element Selected ----- */
+/* Property Groups */
+#common-layout,
+#rect-layout,
+#text-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Property Row */
+.prop-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.prop-row label {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--color);
+  opacity: 0.8;
+  min-width: 60px;
+  text-transform: capitalize;
+}
+
+/* Inputs */
+.prop-row input[type="number"] {
+  flex: 1;
+  height: 32px;
+  padding: 0 10px;
+  background-color: var(--input-bg);
+  border: var(--border);
+  border-radius: 6px;
+  color: var(--color);
+  font-size: 13px;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.prop-row input[type="number"]:hover {
+  background-color: var(--hover-color);
+}
+
+.prop-row input[type="number"]:focus {
+  border-color: #4a90e2;
+  box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.2);
+}
+
+/* Color Input Container */
+.color-input-wrapper {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 32px;
+  padding: 4px 8px;
+  background-color: var(--input-bg);
+  border: var(--border);
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.color-input-wrapper:hover {
+  background-color: var(--hover-color);
+}
+
+.color-input-wrapper:focus-within {
+  border-color: #4a90e2;
+  box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.2);
+}
+
+.color-input-wrapper input[type="color"] {
+  width: 24px;
+  height: 24px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 0;
+  background: none;
+}
+
+.color-input-wrapper input[type="color"]::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+
+.color-input-wrapper input[type="color"]::-webkit-color-swatch {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+}
+
+.color-value {
+  flex: 1;
+  font-size: 12px;
+  color: var(--color);
+  opacity: 0.7;
+  font-family: "Courier New", monospace;
+}
+
+/* Section Dividers */
+.section-divider {
+  height: 1px;
+  background: var(--border);
+  margin: 4px 0;
+}
+
+/* ------- When No Element Selected on Cnavas ----- */
 
 #no-selection {
   color: var(--color);
@@ -97,7 +206,7 @@ body {
   text-align: start;
 }
 
-/* ------- Element Selected ----- */
+/* ------- Element Selected then common layout ----- */
 
 #layout #common-layout {
   display: flex;
@@ -106,7 +215,7 @@ body {
   padding: 0px 10px;
 }
 
-/* ------- Rectangle Element Selected ----- */
+/* ------- Rectangle Element Selected then Rectangle layout + common layout ----- */
 
 #rect-layout {
   display: flex;
@@ -126,7 +235,7 @@ input {
   outline: none;
 }
 
-/* ------- Text Element Selected ----- */
+/* ------- Text Element Selected then text layout + common layout ----- */
 
 #text-layout {
   display: flex;
@@ -144,11 +253,11 @@ input {
 /* ------- Layers Panel ----- */
 
 #layers {
-  height: 43%;
+  height: 44%;
   width: 250px;
   position: absolute;
   right: 2%;
-  bottom: 5%;
+  bottom: 2%;
   user-select: none;
   background-color: var(--panel-bg);
   border: var(--border);
@@ -158,6 +267,7 @@ input {
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  z-index: 99;
 }
 
 #layers h2 {
@@ -217,7 +327,7 @@ input {
 
 .theme-toggle {
   position: absolute;
-  top: 5%;
+  top: 2%;
   left: 2%;
   height: 40px;
   width: 120px;
@@ -229,6 +339,7 @@ input {
   cursor: pointer;
   box-shadow: var(--boxShadow);
   user-select: none;
+  z-index: 99;
 }
 
 .theme-toggle:active {
@@ -243,13 +354,14 @@ input {
   background-color: var(--panel-bg);
   position: absolute;
   left: 2%;
-  bottom: 5%;
+  bottom: 2%;
   border: var(--border);
   border-radius: 10px;
   box-shadow: var(--boxShadow);
   display: flex;
   gap: 10px;
   padding: 10px;
+  z-index: 99;
 }
 
 .toolbar-btn {
@@ -265,10 +377,41 @@ input {
   border-radius: 5px;
   transition: all ease 0.2s;
   user-select: none;
+  outline: none;
+  position: relative;
+}
+
+/* Adding after for achieving the tooltip behaviour */
+
+.toolbar-btn::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  top: -50px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  background: var(--panel-bg);
+  color: var(--color);
+  font-size: 12px;
+  padding: 6px 10px;
+  border-radius: 6px;
+  white-space: nowrap;
+
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+.toolbar-btn:hover::after {
+  opacity: 1;
 }
 
 .toolbar-btn:active {
   scale: 0.98;
+}
+
+.toolbar-btn:focus {
+  outline: none;
 }
 
 .toolbar-btn .rect {
@@ -301,10 +444,19 @@ input {
   position: absolute;
   transform-origin: center center;
   box-sizing: border-box;
+  cursor: grab;
+}
+
+.editor-element:active {
+  cursor: grabbing;
+}
+
+.editor-element.dragging {
+  cursor: grabbing;
 }
 
 .editor-element.rectangle {
-  background-color: var(--color);
+  background-color: rgb(165, 149, 149);
 }
 
 .editor-element.text {
@@ -312,6 +464,14 @@ input {
   border: 1px dashed transparent;
   padding: 4px;
   cursor: text;
+}
+
+.editor-element.text[contenteditable="true"] {
+  cursor: text;
+}
+
+.editor-element.text:active {
+  cursor: grab;
 }
 
 .editor-element.selected {

@@ -3,66 +3,116 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Figma by Code</title>
+    <title>Design by Code</title>
+    <link rel="shortcut icon" href="./android-chrome-512x512.webp" type="image/x-icon">
     <link rel="stylesheet" href="figma.css" />
   </head>
   <body>
     <main class="main">
+
       <!-- Main Canvas Area -->
-
       <div id="canvas">
-        <!-- Toggle Theme Button -->
 
-        <button class="theme-toggle" id="themeToggle">
+        <!-- Toggle Theme Button -->
+        <button class="theme-toggle" data-tooltip="Toggle-Theme" id="themeToggle">
           <span>Toggle Theme</span>
         </button>
 
         <!-- Layout Panel -->
-
         <div id="layout">
-          <h2>Layout</h2>
+          <h2>Properties</h2>
+
+          <!-- No Selection State -->
           <div id="no-selection">
             <p>No element selected</p>
             <span>Select an element to edit its properties</span>
           </div>
+
+          <!-- Common Properties -->
           <div id="common-layout" class="hidden">
-            <label for="">Height - &nbsp;<input type="number" /></label>
-            <label for="">Width - &nbsp;<input type="number" /></label>
-            <label for="">X - &nbsp;<input type="number" /></label>
-            <label for="">Y - &nbsp;<input type="number" /></label>
+            <div class="prop-row">
+              <label>X</label>
+              <input type="number" value="0" />
+            </div>
+
+            <div class="prop-row">
+              <label>Y</label>
+              <input type="number" value="0" />
+            </div>
+
+            <div class="prop-row">
+              <label>Width</label>
+              <input type="number" min="30" value="150" />
+            </div>
+
+            <div class="prop-row">
+              <label>Height</label>
+              <input type="number" min="20" value="150" />
+            </div>
+
+            <div class="prop-row">
+              <label>Rotation</label>
+              <input type="number" value="0" id="rotation-input" />
+            </div>
           </div>
+
+          <!-- Rectangle Properties -->
           <div id="rect-layout" class="hidden">
-            <label for="">Color - &nbsp;<input type="color" value="#6c5ce7" id="rect-color" /></label>
-            <label for="">Radius - &nbsp;<input type="number" id="rect-radius" /></label>
+            <div class="section-divider"></div>
+
+            <div class="prop-row">
+              <label>Fill</label>
+              <div class="color-input-wrapper">
+                <input type="color" value="#6c5ce7" id="rect-color" />
+                <span class="color-value">#6C5CE7</span>
+              </div>
+            </div>
+
+            <div class="prop-row">
+              <label>Radius</label>
+              <input type="number" id="rect-radius" min="0" value="0" />
+            </div>
           </div>
+
+          <!-- Text Properties -->
           <div id="text-layout" class="hidden">
-            <label for="">Font Size - &nbsp;<input type="color" value="#6c5ce7" id="rect-color" /></label>
-            <label for="">Color - &nbsp;<input type="number" id="rect-radius" /></label>
+            <div class="section-divider"></div>
+
+            <div class="prop-row">
+              <label>Font Size</label>
+              <input type="number" min="8" value="16" id="text-fontsize" />
+            </div>
+
+            <div class="prop-row">
+              <label>Color</label>
+              <div class="color-input-wrapper">
+                <input type="color" value="#000000" id="text-color" />
+                <span class="color-value">#000000</span>
+              </div>
+            </div>
           </div>
         </div>
 
         <!-- Layers Panel -->
-
         <div id="layers">
           <h2>Layers</h2>
           <ul id="layers-list"></ul>
         </div>
 
         <!-- Toolbar -->
-
         <div id="toolbar">
-          <button class="toolbar-btn" id="add-rect">
+          <button class="toolbar-btn" id="add-rect" data-tooltip="Rectangle Press (R)">
             <div class="rect"></div>
           </button>
-          <button class="toolbar-btn" id="add-text">
+          <button class="toolbar-btn" id="add-text" data-tooltip="Text Press (T)">
             <div class="text">
               <h2>T</h2>
             </div>
           </button>
-          <button class="toolbar-btn">
+          <button class="toolbar-btn" id="json-btn" data-tooltip="Export JSON">
             <h3>JSON</h3>
           </button>
-          <button class="toolbar-btn">
+          <button class="toolbar-btn" id="html-btn" data-tooltip="Export HTML">
             <h3>HTML</h3>
           </button>
         </div>
